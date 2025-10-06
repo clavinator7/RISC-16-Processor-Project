@@ -8,7 +8,8 @@ module pc(
 );
 
     // Duplicate the MSB 9 times, then concat with 7 bit immediate value
-    wire [15:0] sign_extend_imm = {{9{imm[6]}}, imm[6:0]};
+    wire [15:0] sign_extend_imm;
+    assign sign_extend_imm = {{9{imm[6]}}, imm[6:0]};
 
     always @(posedge clk or negedge rst_n) begin
         // Reset PC when reset signal is given
