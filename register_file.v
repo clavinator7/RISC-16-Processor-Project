@@ -1,13 +1,13 @@
-module register(
+module register_file(
+    // Inputs
     input wire clk,
-    input wire rst_n,
-    input wire WE_rf;
-    input wire [15:0] MUX_rf,
-    input wire [15:0] MUX_tgt,
-    input wire [15:0] alu_out,
+    input wire [1:0] MUX_tgt,
+    input wire MUX_rf,
+    input wire WE_rf,
     input wire [15:0] mem_out,
+    input wire [15:0] alu_out,
     input wire [15:0] pc,
-    input wire [15:0] instruction,
+    // Outputs
     output reg [15:0] reg_out1,
     output reg [15:0] reg_out2,
 );
@@ -24,7 +24,7 @@ module register(
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            for(i = 0; i < 8; i++) regs[i] = 16'h0000;
+            for(i = 0; i < 8; i++) regs[i] <= 16'h0000;
         end
     end
 
