@@ -15,5 +15,5 @@ module instruction_mem(
     */
     end
     assign instr_out = instruction_mem[pc_out];
-    //Connects the instruction to the output-- value in memory location sent to ouptut
+    //Connects the instruction to the output; value in memory location sent to ouptut
 endmodule
