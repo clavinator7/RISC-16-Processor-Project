@@ -8,7 +8,7 @@ module instruction_mem(
     initial begin //initialize all instructions to 0
         integer i;
         for (i=0; i<65536; i=i+1) 
-            instruction_mem[i] = 16'b0000000000000000;
+            instruction_mem[i] = 16'h0000;
      /*   for (i=0, i<100, i=i+1)//Displays first 100 instructions to make sure 0
             $display("Instruction %d: %b", i, instruction_mem[i]);
     end
