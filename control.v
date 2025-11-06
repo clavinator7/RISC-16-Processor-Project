@@ -87,7 +87,7 @@ module control (
                 FUNC_alu = 2'b00;
                 MUX_alu1 = 0;
                 MUX_alu2 = 1;
-                MUX_pc = 2'b10;
+                MUX_pc = 2'b00;
                 MUX_rf = 1;
                 MUX_tgt = 2'b00;
                 WE_rf = 0;
