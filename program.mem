@@ -1,0 +1,54 @@
+// This is a multiplication program
+// Edit instructions 0 and 1 to change the multiplicand and multiplier
+
+
+
+// 0. ADDI R1, R0, 7  (R1 = 7, Multiplicand)
+// Op:001 rA:001 rB:000 imm:7
+001_001_000_0000011
+
+// 1. ADDI R2, R0, 8  (R2 = 8, Multiplier/Counter)
+// Op:001 rA:010 rB:000 imm:8
+001_010_000_0000011
+
+// 2. ADDI R3, R0, 0  (R3 = 0, Result)
+// Op:001 rA:011 rB:000 imm:0
+001_011_000_0000000
+
+// 3. NAND R4, R0, R0 (R4 = ~0 = -1)
+// We need -1 to decrement. NAND(0,0) produces -1 (All 1s)
+// Op:010 rA:100 rB:000 rC:000
+010_100_000_0000_000
+
+
+// --- LOOP START (Address 4) ---
+
+// 4. BEQ R2, R0, 3   (Check if Counter R2 == 0)
+// If R2 is 0, skip the next 3 lines (Jump to HALT)
+// Op:110 rA:010 rB:000 imm:3
+110_010_000_0000011
+
+// 5. ADD R3, R3, R1  (Result = Result + 7)
+// Op:000 rA:011 rB:011 rC:001
+000_011_011_0000_001
+
+// 6. ADD R2, R2, R4  (Counter = Counter + (-1))
+// Op:000 rA:010 rB:010 rC:100
+000_010_010_0000_100
+
+// 7. BEQ R0, R0, -4  (Jump back to "Check")
+// PC formula: PC_new = PC + 1 + imm. 
+// We want to go back 4 instructions (to index 4). 
+// imm must be -4 (Binary: 1111100)
+// Op:110 rA:000 rB:000 imm:-4
+110_000_000_1111100
+
+
+// --- DONE (Address 9) ---
+
+// 8. BEQ R0, R0, -1  (Infinite Loop / Halt)
+// Op:110 rA:000 rB:000 imm:-1
+110_000_000_1111111
+
+
+
