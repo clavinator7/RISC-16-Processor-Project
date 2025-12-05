@@ -1,7 +1,7 @@
 module instruction_mem(
-    input wire [15:0] pc_out, 
+    input [15:0] pc_out, 
     //which instruction to read
-    output wire [15:0] instr_out//which instruction gives to CPU
+    output [15:0] instr_out//which instruction gives to CPU
 );
     reg [15:0] instruction_mem [0:65535];//65536 instructions, 16 bits each
     integer i;
